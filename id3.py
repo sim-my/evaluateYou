@@ -1,7 +1,5 @@
 import pandas as pd
 import numpy as np
-from pprint import pprint
-
 
 dataset = pd.read_csv('static/performance.csv')
 
@@ -83,7 +81,7 @@ def ID3(data,originaldata,features,target_attribute_name="final-term-class12",pa
             
         return(tree)       
         
-def predict(query,tree,default = 1):
+def predict(query,tree,default = 1.0):
    
     print(type(query['gender']))
     #1.

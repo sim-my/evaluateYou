@@ -20,14 +20,11 @@
         margin-top: -65px;
         text-align: center;
         font-family: "Trocchi";
-        color: #ff6347;
         animation-duration: 6s;
       }
       body {
-       height: 100%;
-       background-image: linear-gradient(315deg, #c3e6d6 46%, #aed0e0 54%);
-
-
+        height: 100%;
+        background-image: linear-gradient(315deg, #c3e6d6 46%, #aed0e0 54%);
       }
 
       .card-img-top,
@@ -79,7 +76,7 @@
 
       <a class="navbar-brand" href="#">
         <img
-          class="logo p-1 rounded-circle "
+          class="logo p-1 rounded-circle"
           src="/static/images/logo.png"
           width="120"
           height="120"
@@ -165,7 +162,7 @@
           </div>
           <div id="result-text-wrapper">
             <p class="result-text animate__animated animate__zoomInDown">
-              Estimated Range: 50-60%
+              Estimated Result: {{final_result}}
             </p>
           </div>
         </div>
@@ -189,6 +186,7 @@
     ></script>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
+      var result = "{{final_result}}";
       var r = 100;
       var circles = document.querySelectorAll(".circle");
       var total_circles = circles.length;
@@ -243,7 +241,28 @@
       var mask = document.querySelector("#mask");
       var meter_needle = document.querySelector("#meter_needle");
       function range_change_event() {
-        var percent = 100;
+        var percent;
+        if (result == "Below 50%") {
+          percent = 30;
+          document.querySelector(".result-text").style.color= "#ff0000";
+          
+        } else if (result == "50-60%") {
+          percent = 55;
+          document.querySelector(".result-text").style.color= "#ff6347";
+        } else if (result == "60-70%") {
+          percent = 65;
+          document.querySelector(".result-text").style.color= "#ffc300";
+        } else if (result == "70-80%") {
+          percent = 75;
+          document.querySelector(".result-text").style.color= "#ffff00";
+        } else if (result == "80-90%") {
+          percent = 85;
+          document.querySelector(".result-text").style.color= "#90ee90";
+        } 
+        else {
+          percent = 95;
+          document.querySelector(".result-text").style.color= "#228B22";
+        }
         var meter_value = semi_cf - (percent * semi_cf) / 100;
         mask.setAttribute("stroke-dasharray", meter_value + "," + cf);
         meter_needle.style.transform =
