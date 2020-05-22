@@ -83,7 +83,7 @@ def ID3(data,originaldata,features,target_attribute_name="final-term-class12",pa
         
 def predict(query,tree,default = 1.0):
    
-    print(type(query['gender']))
+    
     #1.
     for key in list(query.keys()):
         if key in list(tree.keys()):
