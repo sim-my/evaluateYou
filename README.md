@@ -1,10 +1,8 @@
-# evaluateYou
-
-Installation
+#Installation
 
 $ pip install -r requirements.txt
 
-Running the app
+#Running the app
 
 $env:flask_app = "home"
 
